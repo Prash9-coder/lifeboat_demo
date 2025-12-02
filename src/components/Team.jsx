@@ -7,17 +7,15 @@ const Team = ({ darkMode }) => {
 
     const team = [
         {
-            name: 'Rajesh Kumar',
+            name: 'Ranjith Padidala',
             role: 'CEO & Founder',
-            image: 'https://i.pravatar.cc/400?img=12',
+            image: 'src\\assets\\ranjith.jpg',
             bio: 'Visionary leader with 15+ years in tech industry, driving innovation and growth',
             expertise: ['Leadership', 'Strategy', 'Innovation'],
             gradient: 'from-purple-500 to-pink-500',
             social: {
-                linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'rajesh@lifeboat.tech'
+                linkedin: 'www.linkedin.com/in/ranjith-padidala-profile',
+                email: 'ranjith@lifeboat.co.in'
             },
             stats: {
                 experience: '15+ Years',

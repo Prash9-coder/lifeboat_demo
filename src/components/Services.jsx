@@ -45,11 +45,11 @@ const Services = ({ darkMode }) => {
         },
         {
             icon: <FaShieldAlt className="text-5xl" />,
-            title: 'Cybersecurity',
+            title: 'SMS & Watsapp Marketing',
             description: 'Comprehensive security solutions to protect your data and infrastructure from threats.',
             gradient: 'from-red-500 to-pink-500',
             image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop',
-            features: ['Threat Detection', 'Data Encryption', '24/7 Monitoring']
+            features: ['Digital Marketing', 'Social Media Marketing', '24/7 Monitoring']
         },
     ]
 

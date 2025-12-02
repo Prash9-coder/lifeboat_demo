@@ -1,15 +1,16 @@
+// App.jsx - UPDATED
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-// Import components that load immediately (Critical/Above the fold)
+// Import components
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import StatsBanner from './components/StatsBanner'
 import Services from './components/Services'
 
-// Lazy load heavy components (Below the fold - Performance optimization)
+// Lazy load components
 const Process = lazy(() => import('./components/Process'))
 const TechStack = lazy(() => import('./components/TechStack'))
 const About = lazy(() => import('./components/About'))
@@ -21,10 +22,7 @@ const CTA = lazy(() => import('./components/CTA'))
 const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
 
-// ============================================
-// LOADING SPINNER COMPONENT
-// ============================================
-const LoadingSpinner = ({ darkMode }) => {
+const LoadingSpinner = () => {
   return (
     <div className="flex items-center justify-center py-20">
       <motion.div
@@ -39,7 +37,7 @@ const LoadingSpinner = ({ darkMode }) => {
         }}
         className="relative"
       >
-        <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full"></div>
+        <div className="w-16 h-16 border-4 border-[#3234a2] border-t-transparent rounded-full"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl">
           ⚡
         </div>
@@ -48,10 +46,7 @@ const LoadingSpinner = ({ darkMode }) => {
   )
 }
 
-// ============================================
-// SCROLL TO TOP BUTTON COMPONENT
-// ============================================
-const ScrollToTop = ({ darkMode }) => {
+const ScrollToTop = () => {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -81,14 +76,9 @@ const ScrollToTop = ({ darkMode }) => {
           whileHover={{ scale: 1.1, y: -5 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className={`fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all ${darkMode
-            ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-            : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-            }`}
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center bg-gradient-to-r from-[#32a162] to-[#3234a2] text-white"
           style={{
-            boxShadow: darkMode
-              ? '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(236, 72, 153, 0.4)'
-              : '0 0 20px rgba(139, 92, 246, 0.4)'
+            boxShadow: '0 0 20px rgba(50, 52, 162, 0.3)'
           }}
           aria-label="Scroll to top"
         >
@@ -111,9 +101,6 @@ const ScrollToTop = ({ darkMode }) => {
   )
 }
 
-// ============================================
-// INITIAL LOADING SCREEN COMPONENT
-// ============================================
 const InitialLoadingScreen = () => {
   return (
     <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
@@ -123,7 +110,6 @@ const InitialLoadingScreen = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        {/* Animated Logo */}
         <motion.div
           animate={{
             rotate: [0, 360],
@@ -134,15 +120,14 @@ const InitialLoadingScreen = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl"
+          className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-[#3234a2] via-gray-500 to-[#32a162] rounded-2xl flex items-center justify-center shadow-2xl"
           style={{
-            boxShadow: '0 0 60px rgba(139, 92, 246, 0.8), 0 0 100px rgba(236, 72, 153, 0.6)'
+            boxShadow: '0 0 60px rgba(50, 52, 162, 0.6), 0 0 100px rgba(80, 200, 120, 0.4)'
           }}
         >
           <span className="text-5xl">🚀</span>
         </motion.div>
 
-        {/* Loading Text */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -161,17 +146,15 @@ const InitialLoadingScreen = () => {
           Loading amazing content...
         </motion.p>
 
-        {/* Progress Bar */}
         <div className="w-80 h-2 bg-gray-800 rounded-full overflow-hidden mx-auto">
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
+            className="h-full bg-gradient-to-r from-[#3234a2] via-[#32a162] to-gray-500"
           />
         </div>
 
-        {/* Loading Dots */}
         <motion.div
           className="flex justify-center gap-2 mt-6"
           initial={{ opacity: 0 }}
@@ -181,7 +164,7 @@ const InitialLoadingScreen = () => {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="w-3 h-3 bg-purple-500 rounded-full"
+              className="w-3 h-3 bg-[#3234a2] rounded-full"
               animate={{
                 scale: [1, 1.5, 1],
                 opacity: [0.5, 1, 0.5]
@@ -199,16 +182,10 @@ const InitialLoadingScreen = () => {
   )
 }
 
-// ============================================
-// MAIN APP COMPONENT
-// ============================================
 function App() {
-  const [darkMode, setDarkMode] = useState(true)
   const [loading, setLoading] = useState(true)
 
-  // Initialize AOS and handle initial loading
   useEffect(() => {
-    // Initialize AOS (Animate On Scroll library)
     AOS.init({
       duration: 1000,
       once: true,
@@ -216,7 +193,6 @@ function App() {
       offset: 50
     })
 
-    // Simulate initial page load
     const timer = setTimeout(() => {
       setLoading(false)
     }, 2000)
@@ -224,18 +200,11 @@ function App() {
     return () => clearTimeout(timer)
   }, [])
 
-  // Handle dark mode toggle
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-      document.body.style.backgroundColor = '#0f172a'
-    } else {
-      document.documentElement.classList.remove('dark')
-      document.body.style.backgroundColor = '#ffffff'
-    }
-  }, [darkMode])
+    document.documentElement.classList.remove('dark')
+    document.body.style.backgroundColor = '#ffffff'
+  }, [])
 
-  // Prevent scroll during loading
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = 'hidden'
@@ -244,100 +213,62 @@ function App() {
     }
   }, [loading])
 
-  // Show loading screen
   if (loading) {
     return <InitialLoadingScreen />
   }
 
   return (
-    <div className={`${darkMode ? 'dark' : ''} relative min-h-screen`}>
-      {/* Cursor Trail Effect (Optional) */}
+    <div className="relative min-h-screen">
       <div className="fixed inset-0 pointer-events-none z-50" id="cursor-trail" />
 
-      {/* ========================================== */}
-      {/* NAVIGATION */}
-      {/* ========================================== */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
+      <Hero />
+      <StatsBanner />
+      <Services />
 
-      {/* ========================================== */}
-      {/* HERO SECTION - Immediately Visible */}
-      {/* ========================================== */}
-      <Hero darkMode={darkMode} />
-
-      {/* ========================================== */}
-      {/* STATS BANNER - Immediately Visible */}
-      {/* ========================================== */}
-      <StatsBanner darkMode={darkMode} />
-
-      {/* ========================================== */}
-      {/* SERVICES SECTION - Immediately Visible */}
-      {/* ========================================== */}
-      <Services darkMode={darkMode} />
-
-      {/* ========================================== */}
-      {/* LAZY LOADED SECTIONS - Load on demand */}
-      {/* ========================================== */}
-
-      {/* Process Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Process darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Process />
       </Suspense>
 
-      {/* Tech Stack Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <TechStack darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <TechStack />
       </Suspense>
 
-      {/* About Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <About darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <About />
       </Suspense>
 
-      {/* Projects Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Projects darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Projects />
       </Suspense>
 
-      {/* Team Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Team darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Team />
       </Suspense>
 
-      {/* Testimonials Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Testimonials darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Testimonials />
       </Suspense>
 
-      {/* FAQ Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <FAQ darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <FAQ />
       </Suspense>
 
-      {/* CTA Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <CTA darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <CTA />
       </Suspense>
 
-      {/* Contact Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Contact darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Contact />
       </Suspense>
 
-      {/* Footer Section */}
-      <Suspense fallback={<LoadingSpinner darkMode={darkMode} />}>
-        <Footer darkMode={darkMode} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Footer />
       </Suspense>
 
-      {/* ========================================== */}
-      {/* SCROLL TO TOP BUTTON */}
-      {/* ========================================== */}
-      <ScrollToTop darkMode={darkMode} />
+      <ScrollToTop />
 
-      {/* ========================================== */}
-      {/* FLOATING BACKGROUND EFFECTS */}
-      {/* ========================================== */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Gradient Orbs */}
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -349,7 +280,7 @@ function App() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#3234a2] rounded-full opacity-10 blur-3xl"
         />
         <motion.div
           animate={{
@@ -362,7 +293,7 @@ function App() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500 rounded-full opacity-10 blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#32a162] rounded-full opacity-10 blur-3xl"
         />
       </div>
     </div>

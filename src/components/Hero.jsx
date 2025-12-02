@@ -1,8 +1,9 @@
+// Hero.jsx - ONLY COLOR CHANGES
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useEffect, useState } from 'react'
 
-const Hero = ({ darkMode }) => {
+const Hero = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
     useEffect(() => {
@@ -18,33 +19,21 @@ const Hero = ({ darkMode }) => {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Animated Background with Image */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&h=1080&fit=crop&q=80"
                     alt="Tech Background"
                     className="w-full h-full object-cover opacity-80"
                 />
-                // Find this line (around line 25):
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop"
-                        alt="Technology Background"
-                        className="w-full h-full object-cover opacity-20"  // ← Change to opacity-40
-                    />
-                    <div className={`absolute inset-0 ${darkMode ? 'bg-gradient-to-b from-gray-900/70 via-gray-900/60 to-gray-900/70' : 'bg-gradient-to-b from-gray-50/70 via-gray-50/60 to-gray-50/70'}`}></div>  // ← Reduced opacity
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/70"></div>
             </div>
-
-            {/* Mesh Gradient Overlay */}
-            <div className="absolute inset-0 mesh-gradient opacity-60" />
 
             {/* Floating Particles */}
             <div className="particles-bg">
                 {[...Array(20)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-2 h-2 bg-purple-500 rounded-full"
+                        className="absolute w-2 h-2 bg-primary rounded-full"
                         style={{
                             left: `${Math.random() * 100}%`,
                             top: `${Math.random() * 100}%`,
@@ -62,22 +51,6 @@ const Hero = ({ darkMode }) => {
                     />
                 ))}
             </div>
-
-            {/* Parallax Moving Shapes */}
-            <motion.div
-                style={{
-                    x: mousePosition.x,
-                    y: mousePosition.y,
-                }}
-                className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
-            />
-            <motion.div
-                style={{
-                    x: -mousePosition.x,
-                    y: -mousePosition.y,
-                }}
-                className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl"
-            />
 
             {/* Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
@@ -97,16 +70,13 @@ const Hero = ({ darkMode }) => {
                         <motion.div
                             animate={{
                                 boxShadow: [
-                                    '0 0 20px rgba(139, 92, 246, 0.5)',
-                                    '0 0 40px rgba(236, 72, 153, 0.5)',
-                                    '0 0 20px rgba(139, 92, 246, 0.5)',
+                                    '0 0 15px rgba(50, 52, 162, 0.3)',
+                                    '0 0 25px rgba(50, 52, 162, 0.3)',
+                                    '0 0 15px rgba(50, 52, 162, 0.3)',
                                 ]
                             }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className={`inline-flex items-center px-6 py-3 rounded-full text-sm font-bold border-2 backdrop-blur-xl ${darkMode
-                                ? 'bg-white/5 text-purple-300 border-purple-500/30'
-                                : 'bg-purple-50 text-purple-700 border-purple-300'
-                                }`}
+                            className="inline-flex items-center px-6 py-3 rounded-full text-sm font-bold border-2 backdrop-blur-xl bg-white/5 text-primary border-primary/30"
                         >
                             <motion.span
                                 animate={{ rotate: 360 }}
@@ -131,10 +101,9 @@ const Hero = ({ darkMode }) => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Main Headline with Stagger Animation */}
+                    {/* Main Headline */}
                     <motion.h1
-                        className={`text-6xl md:text-7xl lg:text-9xl font-black mb-8 leading-tight font-display ${darkMode ? 'text-white' : 'text-gray-900'
-                            }`}
+                        className="text-6xl md:text-7xl lg:text-9xl font-black mb-8 leading-tight font-display text-gray-900"
                     >
                         <motion.span
                             initial={{ opacity: 0, y: 20 }}
@@ -148,7 +117,7 @@ const Hero = ({ darkMode }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6 }}
-                            className="block gradient-text animate-float-slow"
+                            className="block text-primary"
                         >
                             Digital Dreams
                         </motion.span>
@@ -167,11 +136,10 @@ const Hero = ({ darkMode }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1 }}
-                        className={`text-xl md:text-2xl lg:text-3xl mb-12 max-w-4xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                            }`}
+                        className="text-xl md:text-2xl lg:text-3xl mb-12 max-w-4xl mx-auto text-gray-700"
                     >
-                        We craft <span className="font-bold text-purple-500">cutting-edge software solutions</span> that
-                        propel businesses into the <span className="font-bold text-pink-500">future of technology</span>
+                        We craft <span className="font-bold text-primary">cutting-edge software solutions</span> that
+                        propel businesses into the <span className="font-bold text-accent">future of technology</span>
                     </motion.p>
 
                     {/* CTA Buttons */}
@@ -184,7 +152,7 @@ const Hero = ({ darkMode }) => {
                         <motion.button
                             whileHover={{ scale: 1.05, y: -3 }}
                             whileTap={{ scale: 0.95 }}
-                            className="group px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-bold text-lg shadow-2xl neon-glow relative overflow-hidden"
+                            className="group px-10 py-5 bg-accent text-white rounded-2xl font-bold text-lg shadow-lg relative overflow-hidden"
                         >
                             <span className="relative z-10 flex items-center">
                                 Start Your Project
@@ -199,21 +167,12 @@ const Hero = ({ darkMode }) => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </motion.svg>
                             </span>
-                            <motion.div
-                                className="absolute inset-0 bg-white/20"
-                                initial={{ x: '-100%' }}
-                                whileHover={{ x: '100%' }}
-                                transition={{ duration: 0.5 }}
-                            />
                         </motion.button>
 
                         <motion.button
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`px-10 py-5 rounded-2xl font-bold text-lg border-3 backdrop-blur-xl ${darkMode
-                                ? 'border-white/30 text-white hover:bg-white/10'
-                                : 'border-gray-300 text-gray-900 hover:bg-gray-100'
-                                }`}
+                            className="px-10 py-5 rounded-2xl font-bold text-lg border-3 backdrop-blur-xl border-gray-300 text-gray-900 hover:bg-gray-100"
                         >
                             Explore Our Work
                         </motion.button>
@@ -225,29 +184,21 @@ const Hero = ({ darkMode }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.4 }}
                         className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
-                        data-aos="fade-up"
-                        data-aos-delay="200"
                     >
                         {[
-                            { number: '500+', label: 'Projects Delivered', icon: '🎯', color: 'from-purple-500 to-pink-500' },
-                            { number: '200+', label: 'Happy Clients', icon: '😊', color: 'from-blue-500 to-cyan-500' },
-                            { number: '15+', label: 'Countries', icon: '🌍', color: 'from-green-500 to-teal-500' },
-                            { number: '98%', label: 'Satisfaction', icon: '⭐', color: 'from-yellow-500 to-orange-500' },
+                            { number: '500+', label: 'Projects Delivered', icon: '🎯', color: 'primary' },
+                            { number: '200+', label: 'Happy Clients', icon: '😊', color: 'primary' },
+                            { number: '15+', label: 'Countries', icon: '🌍', color: 'accent' },
+                            { number: '98%', label: 'Satisfaction', icon: '⭐', color: 'accent' },
                         ].map((stat, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 1.6 + index * 0.1, type: "spring" }}
-                                whileHover={{ scale: 1.1, y: -10, rotateY: 10 }}
-                                className={`glass-effect p-6 rounded-2xl card-3d group cursor-pointer relative overflow-hidden`}
+                                whileHover={{ scale: 1.1, y: -10 }}
+                                className="p-6 rounded-2xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all cursor-pointer"
                             >
-                                {/* Animated Background Gradient */}
-                                <motion.div
-                                    className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                                    whileHover={{ scale: 1.5, rotate: 45 }}
-                                />
-
                                 <div className="relative z-10">
                                     <motion.div
                                         className="text-4xl mb-2"
@@ -256,33 +207,15 @@ const Hero = ({ darkMode }) => {
                                     >
                                         {stat.icon}
                                     </motion.div>
-                                    <div className="text-4xl md:text-5xl font-black gradient-text mb-2 font-display">
+                                    <div className={`text-4xl md:text-5xl font-black mb-2 font-display text-${stat.color}`}>
                                         {stat.number}
                                     </div>
-                                    <div className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                    <div className="text-sm font-medium text-gray-600">
                                         {stat.label}
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
-                    </motion.div>
-
-                    {/* Scroll Indicator */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2 }}
-                        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                    >
-                        <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                            className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
-                        >
-                            <svg className="w-6 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                            </svg>
-                        </motion.div>
                     </motion.div>
                 </motion.div>
             </div>
