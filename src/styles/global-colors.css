@@ -1,0 +1,76 @@
+/* global-colors.css - SINGLE SOURCE OF TRUTH */
+:root {
+    /* Primary Colors - Blue */
+    --color-primary: #3234a2;
+    --color-primary-light: #4a4cff;
+    --color-primary-dark: #2a2b8a;
+    --color-primary-rgb: 50, 52, 162;
+
+    /* Accent Colors - Green */
+    --color-accent: #32a162;
+    --color-accent-light: #3bc475;
+    --color-accent-dark: #288a52;
+    --color-accent-rgb: 50, 161, 98;
+
+    /* Background Colors */
+    --color-bg-white: #ffffff;
+    --color-bg-light: #f8fafc;
+    --color-bg-gray: #f1f5f9;
+
+    /* Text Colors */
+    --color-text-dark: #1e293b;
+    --color-text-medium: #475569;
+    --color-text-light: #64748b;
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-accent {
+    background-color: var(--color-accent);
+}
+
+/* Gradient Text - Blue to Green */
+.gradient-text {
+    background: linear-gradient(135deg, #3234a2 0%, #32a162 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gradient Backgrounds */
+.gradient-primary {
+    background: linear-gradient(135deg, #3234a2 0%, #4a4cff 100%);
+}
+
+.gradient-accent {
+    background: linear-gradient(135deg, #32a162 0%, #3bc475 100%);
+}
+
+.gradient-mixed {
+    background: linear-gradient(135deg, #3234a2 0%, #32a162 100%);
+}
+
+/* Neon Glow - Updated */
+.neon-glow {
+    box-shadow:
+        0 0 20px rgba(50, 52, 162, 0.4),
+        0 0 40px rgba(50, 52, 162, 0.3),
+        0 0 60px rgba(50, 52, 162, 0.2);
+}
+
+.neon-glow-green {
+    box-shadow:
+        0 0 20px rgba(50, 161, 98, 0.4),
+        0 0 40px rgba(50, 161, 98, 0.3);
+}

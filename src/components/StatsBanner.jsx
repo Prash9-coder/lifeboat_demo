@@ -1,4 +1,3 @@
-// StatsBanner.jsx - ONLY COLOR CHANGES
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
@@ -68,12 +67,12 @@ const StatsBanner = () => {
                                 {stat.suffix}
                             </div>
 
-                            <div className="text-sm font-medium text-primary">
+                            <div className="text-sm font-medium text-[#3234a2]">
                                 {stat.label}
                             </div>
 
                             <motion.div
-                                className="w-0 h-1 bg-accent mx-auto mt-2 group-hover:w-full transition-all duration-300 rounded-full"
+                                className="w-0 h-1 bg-[#32a162] mx-auto mt-2 group-hover:w-full transition-all duration-300 rounded-full"
                             />
                         </motion.div>
                     ))}

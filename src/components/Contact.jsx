@@ -6,7 +6,7 @@ import {
     FaPaperPlane, FaCheckCircle
 } from 'react-icons/fa'
 
-const Contact = ({ darkMode }) => {
+const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -42,25 +42,25 @@ const Contact = ({ darkMode }) => {
         {
             icon: <FaEnvelope className="text-2xl" />,
             title: 'Email Us',
-            info: 'hello@lifeboat.tech',
+            info: 'contact@lifeboat.co.in',
             subInfo: 'We reply within 24 hours',
-            gradient: 'from-purple-500 to-pink-500',
+            gradient: 'from-[#3234a2] to-[#32a162]',
             link: 'mailto:hello@lifeboat.tech'
         },
         {
             icon: <FaPhone className="text-2xl" />,
             title: 'Call Us',
-            info: '+91 7569787335',
+            info: '+91 9014651719, +91 9182259795',
             subInfo: 'Mon-Fri from 9am to 6pm',
-            gradient: 'from-blue-500 to-cyan-500',
-            link: 'tel:+917569787335'
+            gradient: 'from-[#3234a2] to-[#32a162]',
+            link: 'tel:+919014651719'
         },
         {
             icon: <FaMapMarkerAlt className="text-2xl" />,
             title: 'Visit Us',
-            info: '3rd Floor, GMR & GS Complex, Near Police Headquarters, Hanamkonda, Kishanpura, Telangana 506001',
+            info: '3rd Floor, GMR & GS Complex, Hanamkonda',
             subInfo: 'Come say hello at our office',
-            gradient: 'from-green-500 to-teal-500',
+            gradient: 'from-[#32a162] to-[#3234a2]',
             link: 'https://maps.app.goo.gl/xynyqCDBtkNt5KFN6'
         },
         {
@@ -68,7 +68,7 @@ const Contact = ({ darkMode }) => {
             title: 'Working Hours',
             info: 'Mon - Sat: 10AM - 7PM',
             subInfo: 'Weekend: By appointment',
-            gradient: 'from-orange-500 to-red-500',
+            gradient: 'from-[#32a162] to-[#3234a2]',
             link: null
         },
     ]
@@ -82,7 +82,6 @@ const Contact = ({ darkMode }) => {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
-        // Clear error when user starts typing
         if (errors[e.target.name]) {
             setErrors({ ...errors, [e.target.name]: '' })
         }
@@ -111,7 +110,6 @@ const Contact = ({ darkMode }) => {
 
         setIsSubmitting(true)
 
-        // Simulate API call
         setTimeout(() => {
             setIsSubmitting(false)
             setIsSubmitted(true)
@@ -124,21 +122,17 @@ const Contact = ({ darkMode }) => {
                 budget: '',
                 message: '',
             })
-
-            // Reset success message after 5 seconds
             setTimeout(() => setIsSubmitted(false), 5000)
         }, 2000)
     }
 
     return (
-        <section
-            id="contact"
-            className={`py-24 relative overflow-hidden ${darkMode ? 'bg-gray-950' : 'bg-gray-50'
-                }`}
-        >
+        <section id="contact" className="py-24 relative overflow-hidden bg-gray-50">
             {/* Background */}
             <div className="absolute inset-0 opacity-30">
-                <div className="absolute inset-0 mesh-gradient" />
+                <div className="absolute inset-0" style={{
+                    background: 'radial-gradient(circle at 20% 50%, rgba(50, 52, 162, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(50, 161, 98, 0.1) 0%, transparent 50%)'
+                }} />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -154,21 +148,16 @@ const Contact = ({ darkMode }) => {
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
-                        className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${darkMode
-                            ? 'bg-purple-900/50 text-purple-300 border border-purple-500/30'
-                            : 'bg-purple-100 text-purple-700 border border-purple-200'
-                            }`}
+                        className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-[#3234a2]/10 text-[#3234a2] border border-[#3234a2]/20"
                     >
                         📧 Get In Touch
                     </motion.span>
 
-                    <h2 className={`text-4xl md:text-6xl font-black mb-6 font-display ${darkMode ? 'text-white' : 'text-gray-900'
-                        }`}>
-                        Let's Start a <span className="gradient-text">Conversation</span>
+                    <h2 className="text-4xl md:text-6xl font-black mb-6 font-display text-gray-900">
+                        Let's Start a <span className="bg-gradient-to-r from-[#3234a2] to-[#32a162] bg-clip-text text-transparent">Conversation</span>
                     </h2>
 
-                    <p className={`text-xl max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'
-                        }`}>
+                    <p className="text-xl max-w-2xl mx-auto text-gray-600">
                         Have a project in mind? We'd love to hear about it. Send us a message and we'll get back to you within 24 hours.
                     </p>
                 </motion.div>
@@ -181,9 +170,7 @@ const Contact = ({ darkMode }) => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className={`p-8 rounded-2xl ${darkMode ? 'bg-gray-900 border border-gray-800' : 'bg-white border border-gray-200'
-                            } shadow-2xl`}>
-
+                        <div className="p-8 rounded-2xl bg-white border border-gray-200 shadow-2xl">
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ scale: 0 }}
@@ -193,14 +180,14 @@ const Contact = ({ darkMode }) => {
                                     <motion.div
                                         animate={{ scale: [1, 1.2, 1] }}
                                         transition={{ duration: 0.5 }}
-                                        className="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                                        className="w-24 h-24 bg-gradient-to-r from-[#32a162] to-[#3234a2] rounded-full flex items-center justify-center mx-auto mb-6"
                                     >
                                         <FaCheckCircle className="text-5xl text-white" />
                                     </motion.div>
-                                    <h3 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                                    <h3 className="text-3xl font-bold mb-4 text-gray-900">
                                         Message Sent! 🎉
                                     </h3>
-                                    <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
+                                    <p className="text-gray-600">
                                         Thank you for reaching out! We'll get back to you within 24 hours.
                                     </p>
                                 </motion.div>
@@ -209,8 +196,7 @@ const Contact = ({ darkMode }) => {
                                     {/* Name & Email */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Your Name *
                                             </label>
                                             <motion.input
@@ -221,11 +207,9 @@ const Contact = ({ darkMode }) => {
                                                 onChange={handleChange}
                                                 className={`w-full px-4 py-3 rounded-xl border-2 ${errors.name
                                                     ? 'border-red-500'
-                                                    : darkMode
-                                                        ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                        : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
+                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-[#3234a2]'
                                                     } outline-none transition-all`}
-                                                placeholder="Nimmala Prashanth"
+                                                placeholder="John Doe"
                                             />
                                             {errors.name && (
                                                 <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -233,8 +217,7 @@ const Contact = ({ darkMode }) => {
                                         </div>
 
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Email Address *
                                             </label>
                                             <motion.input
@@ -245,11 +228,9 @@ const Contact = ({ darkMode }) => {
                                                 onChange={handleChange}
                                                 className={`w-full px-4 py-3 rounded-xl border-2 ${errors.email
                                                     ? 'border-red-500'
-                                                    : darkMode
-                                                        ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                        : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
+                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-[#3234a2]'
                                                     } outline-none transition-all`}
-                                                placeholder="nimmalaprashanth9@gmail.com"
+                                                placeholder="john@example.com"
                                             />
                                             {errors.email && (
                                                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -260,8 +241,7 @@ const Contact = ({ darkMode }) => {
                                     {/* Phone & Company */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Phone Number
                                             </label>
                                             <motion.input
@@ -270,17 +250,13 @@ const Contact = ({ darkMode }) => {
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className={`w-full px-4 py-3 rounded-xl border-2 ${darkMode
-                                                    ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
-                                                    } outline-none transition-all`}
+                                                className="w-full px-4 py-3 rounded-xl border-2 bg-white border-gray-300 text-gray-900 focus:border-[#3234a2] outline-none transition-all"
                                                 placeholder="+91 7569787335"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Company Name
                                             </label>
                                             <motion.input
@@ -289,11 +265,8 @@ const Contact = ({ darkMode }) => {
                                                 name="company"
                                                 value={formData.company}
                                                 onChange={handleChange}
-                                                className={`w-full px-4 py-3 rounded-xl border-2 ${darkMode
-                                                    ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
-                                                    } outline-none transition-all`}
-                                                placeholder="LifeBoat Technologies"
+                                                className="w-full px-4 py-3 rounded-xl border-2 bg-white border-gray-300 text-gray-900 focus:border-[#3234a2] outline-none transition-all"
+                                                placeholder="Your Company"
                                             />
                                         </div>
                                     </div>
@@ -301,8 +274,7 @@ const Contact = ({ darkMode }) => {
                                     {/* Service & Budget */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Service Interested In
                                             </label>
                                             <motion.select
@@ -310,10 +282,7 @@ const Contact = ({ darkMode }) => {
                                                 name="service"
                                                 value={formData.service}
                                                 onChange={handleChange}
-                                                className={`w-full px-4 py-3 rounded-xl border-2 ${darkMode
-                                                    ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
-                                                    } outline-none transition-all`}
+                                                className="w-full px-4 py-3 rounded-xl border-2 bg-white border-gray-300 text-gray-900 focus:border-[#3234a2] outline-none transition-all"
                                             >
                                                 <option value="">Select a service</option>
                                                 {services.map((service) => (
@@ -323,8 +292,7 @@ const Contact = ({ darkMode }) => {
                                         </div>
 
                                         <div>
-                                            <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                                }`}>
+                                            <label className="block text-sm font-semibold mb-2 text-gray-700">
                                                 Project Budget
                                             </label>
                                             <motion.select
@@ -332,10 +300,7 @@ const Contact = ({ darkMode }) => {
                                                 name="budget"
                                                 value={formData.budget}
                                                 onChange={handleChange}
-                                                className={`w-full px-4 py-3 rounded-xl border-2 ${darkMode
-                                                    ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
-                                                    } outline-none transition-all`}
+                                                className="w-full px-4 py-3 rounded-xl border-2 bg-white border-gray-300 text-gray-900 focus:border-[#3234a2] outline-none transition-all"
                                             >
                                                 <option value="">Select budget range</option>
                                                 {budgets.map((budget) => (
@@ -347,8 +312,7 @@ const Contact = ({ darkMode }) => {
 
                                     {/* Message */}
                                     <div>
-                                        <label className={`block text-sm font-semibold mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'
-                                            }`}>
+                                        <label className="block text-sm font-semibold mb-2 text-gray-700">
                                             Your Message *
                                         </label>
                                         <motion.textarea
@@ -359,9 +323,7 @@ const Contact = ({ darkMode }) => {
                                             rows="6"
                                             className={`w-full px-4 py-3 rounded-xl border-2 ${errors.message
                                                 ? 'border-red-500'
-                                                : darkMode
-                                                    ? 'bg-gray-800 border-gray-700 text-white focus:border-purple-500'
-                                                    : 'bg-white border-gray-300 text-gray-900 focus:border-purple-500'
+                                                : 'bg-white border-gray-300 text-gray-900 focus:border-[#3234a2]'
                                                 } outline-none transition-all resize-none`}
                                             placeholder="Tell us about your project..."
                                         ></motion.textarea>
@@ -376,7 +338,8 @@ const Contact = ({ darkMode }) => {
                                         whileTap={{ scale: 0.98 }}
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold text-lg shadow-2xl neon-glow flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full px-8 py-4 bg-gradient-to-r from-[#3234a2] to-[#32a162] text-white rounded-xl font-bold text-lg shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        style={{ boxShadow: '0 0 30px rgba(50, 52, 162, 0.3)' }}
                                     >
                                         {isSubmitting ? (
                                             <>
@@ -419,8 +382,7 @@ const Contact = ({ darkMode }) => {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
                                 whileHover={{ x: 10, scale: 1.02 }}
-                                className={`block p-6 rounded-2xl ${darkMode ? 'bg-gray-900 border border-gray-800' : 'bg-white border border-gray-200'
-                                    } shadow-lg hover:shadow-2xl transition-all duration-300 group ${item.link ? 'cursor-pointer' : 'cursor-default'}`}
+                                className={`block p-6 rounded-2xl bg-white border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 group ${item.link ? 'cursor-pointer' : 'cursor-default'}`}
                             >
                                 <div className="flex items-start gap-4">
                                     <motion.div
@@ -430,14 +392,13 @@ const Contact = ({ darkMode }) => {
                                         {item.icon}
                                     </motion.div>
                                     <div className="flex-1">
-                                        <h3 className={`text-lg font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'
-                                            }`}>
+                                        <h3 className="text-lg font-bold mb-1 text-gray-900">
                                             {item.title}
                                         </h3>
                                         <p className={`text-lg font-semibold mb-1 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                                             {item.info}
                                         </p>
-                                        <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                                        <p className="text-sm text-gray-600">
                                             {item.subInfo}
                                         </p>
                                     </div>
@@ -450,10 +411,9 @@ const Contact = ({ darkMode }) => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className={`p-6 rounded-2xl ${darkMode ? 'bg-gray-900 border border-gray-800' : 'bg-white border border-gray-200'
-                                } shadow-lg`}
+                            className="p-6 rounded-2xl bg-white border border-gray-200 shadow-lg"
                         >
-                            <h3 className={`text-lg font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            <h3 className="text-lg font-bold mb-4 text-gray-900">
                                 Follow Us
                             </h3>
                             <div className="flex gap-4">
@@ -465,11 +425,8 @@ const Contact = ({ darkMode }) => {
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.2, y: -5 }}
                                         whileTap={{ scale: 0.9 }}
-                                        className={`w-12 h-12 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-gray-100'
-                                            } flex items-center justify-center hover:shadow-lg transition-all`}
-                                        style={{
-                                            color: darkMode ? '#fff' : social.color
-                                        }}
+                                        className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center hover:shadow-lg transition-all"
+                                        style={{ color: social.color }}
                                     >
                                         <social.Icon className="text-xl" />
                                     </motion.a>
@@ -477,14 +434,13 @@ const Contact = ({ darkMode }) => {
                             </div>
                         </motion.div>
 
-                        {/* ✅ UPDATED: Google Maps - iframe tho */}
+                        {/* Google Maps */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             className="rounded-2xl overflow-hidden shadow-lg h-64 relative group"
                         >
-                            {/* Google Maps Iframe */}
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.5463156789!2d79.56234!3d18.01234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcba0c0c0c0c0c0%3A0x1234567890!2sGMR%20%26%20GS%20Complex%2C%20Hanamkonda!5e0!3m2!1sen!2sin!4v1234567890"
                                 width="100%"
@@ -497,7 +453,6 @@ const Contact = ({ darkMode }) => {
                                 title="Office Location"
                             />
 
-                            {/* Overlay with office info */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-6 pointer-events-none">
                                 <div className="text-white">
                                     <h3 className="text-xl font-bold mb-1 flex items-center gap-2">
@@ -505,23 +460,19 @@ const Contact = ({ darkMode }) => {
                                         <motion.span
                                             animate={{ x: [0, 5, 0] }}
                                             transition={{ repeat: Infinity, duration: 1.5 }}
-                                            className="text-sm"
                                         >
                                             →
                                         </motion.span>
                                     </h3>
                                     <p className="text-sm opacity-90">3rd Floor, GMR & GS Complex</p>
-                                    <p className="text-xs opacity-75 mt-1">Click to open in Google Maps</p>
                                 </div>
                             </div>
 
-                            {/* Clickable overlay */}
                             <a
                                 href="https://maps.app.goo.gl/xynyqCDBtkNt5KFN6"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="absolute inset-0 z-10"
-                                aria-label="Open location in Google Maps"
                             />
                         </motion.div>
                     </motion.div>

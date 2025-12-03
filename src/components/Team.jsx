@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion'
-import { FaLinkedin, FaTwitter, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import { FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { useState } from 'react'
 
-const Team = ({ darkMode }) => {
+const Team = () => {
     const [hoveredMember, setHoveredMember] = useState(null)
+    const navigate = useNavigate()  // ✅ Added navigation
 
     const team = [
         {
             name: 'Ranjith Padidala',
             role: 'CEO & Founder',
-            image: '\\assets\\ranjith.jpg',
+            image: '/assets/ranjith.jpg',
             bio: 'Visionary leader with 15+ years in tech industry, driving innovation and growth',
             expertise: ['Leadership', 'Strategy', 'Innovation'],
-            gradient: 'from-purple-500 to-pink-500',
+            gradient: 'from-[#3234a2] to-[#32a162]',
             social: {
                 linkedin: 'www.linkedin.com/in/ranjith-padidala-profile',
                 email: 'ranjith@lifeboat.co.in'
@@ -24,55 +26,15 @@ const Team = ({ darkMode }) => {
             }
         },
         {
-            name: 'Priya Sharma',
-            role: 'Chief Technology Officer',
-            image: 'https://i.pravatar.cc/400?img=45',
-            bio: 'Expert in cloud architecture, AI/ML, and scalable system design',
-            expertise: ['Cloud Architecture', 'AI/ML', 'DevOps'],
-            gradient: 'from-blue-500 to-cyan-500',
-            social: {
-                linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'priya@lifeboat.tech'
-            },
-            stats: {
-                experience: '12+ Years',
-                certifications: '15+',
-                patents: '5'
-            }
-        },
-        {
-            name: 'Arjun Patel',
-            role: 'Lead Full-Stack Developer',
-            image: 'https://i.pravatar.cc/400?img=13',
-            bio: 'Full-stack wizard specializing in React, Node.js, and microservices',
-            expertise: ['React', 'Node.js', 'Microservices'],
-            gradient: 'from-green-500 to-teal-500',
-            social: {
-                linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'arjun@lifeboat.tech'
-            },
-            stats: {
-                experience: '10+ Years',
-                commits: '50K+',
-                contributions: '1000+'
-            }
-        },
-        {
-            name: 'Sneha Reddy',
-            role: 'Head of UI/UX Design',
-            image: 'https://i.pravatar.cc/400?img=47',
+            name: 'Sai Tej',
+            role: 'UI/UX Designer',
+            image: '/assets/saitej.jpg',
             bio: 'Creating beautiful, intuitive user experiences that users love',
             expertise: ['UI Design', 'UX Research', 'Design Systems'],
-            gradient: 'from-pink-500 to-rose-500',
+            gradient: 'from-[#3234a2] to-[#32a162]',
             social: {
                 linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'sneha@lifeboat.tech'
+                email: 'saitej@lifeboat.co.in'
             },
             stats: {
                 experience: '8+ Years',
@@ -81,90 +43,188 @@ const Team = ({ darkMode }) => {
             }
         },
         {
-            name: 'Vikram Singh',
-            role: 'Head of Product',
-            image: 'https://i.pravatar.cc/400?img=33',
-            bio: 'Product strategist focused on user-centric solutions and market fit',
-            expertise: ['Product Strategy', 'Analytics', 'Growth'],
-            gradient: 'from-orange-500 to-red-500',
+            name: 'Abhinay',
+            role: 'Senior Android Developer',
+            image: '/assets/Abhinay.jpeg',
+            bio: 'Proficient Android developer specializing in creating robust, scalable mobile applications with clean architecture and optimal performance.',
+            expertise: ['Kotlin/Java', 'MVVM/MVI Architecture', 'Coroutines/Flow'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
             social: {
                 linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'vikram@lifeboat.tech'
+                email: 'abhinay.android@lifeboat.co.in'
             },
             stats: {
-                experience: '11+ Years',
-                launches: '50+',
-                revenue: '$100M+'
+                experience: '6+ Years',
+                apps: '40+',
+                reviews: '2000+'
             }
         },
         {
-            name: 'Ananya Iyer',
-            role: 'Senior Mobile Developer',
-            image: 'https://i.pravatar.cc/400?img=48',
-            bio: 'Mobile app expert with deep knowledge of React Native and Flutter',
-            expertise: ['React Native', 'Flutter', 'iOS/Android'],
-            gradient: 'from-indigo-500 to-purple-500',
+            name: 'Karthik',
+            role: 'System Architect',
+            image: '/assets/Karthik.jpg',
+            bio: 'Strategic system architect with expertise in designing robust, scalable enterprise solutions. Specializes in cloud migration, system integration, and performance optimization.',
+            expertise: ['Enterprise Architecture', 'AWS/Azure/GCP', 'Containerization'],
+            gradient: 'from-[#3234a2] to-[#32a162]',
             social: {
                 linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'ananya@lifeboat.tech'
-            },
-            stats: {
-                experience: '9+ Years',
-                apps: '100+',
-                downloads: '10M+'
-            }
-        },
-        {
-            name: 'Karthik Menon',
-            role: 'DevOps & Cloud Architect',
-            image: 'https://i.pravatar.cc/400?img=68',
-            bio: 'Infrastructure expert ensuring 99.9% uptime and seamless deployments',
-            expertise: ['AWS', 'Kubernetes', 'CI/CD'],
-            gradient: 'from-yellow-500 to-orange-500',
-            social: {
-                linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'karthik@lifeboat.tech'
+                email: 'karthik@lifeboat.co.in'
             },
             stats: {
                 experience: '10+ Years',
-                uptime: '99.9%',
-                deployments: '10K+'
+                projects: '30+',
+                performance: '+300%'
             }
         },
         {
-            name: 'Divya Krishnan',
-            role: 'AI/ML Engineer',
-            image: 'https://i.pravatar.cc/400?img=49',
-            bio: 'Building intelligent systems with deep learning and neural networks',
-            expertise: ['TensorFlow', 'PyTorch', 'NLP'],
-            gradient: 'from-cyan-500 to-blue-500',
+            name: 'Charan',
+            role: 'Python Developer',
+            image: '/assets/charan.jpg',
+            bio: 'Seasoned Python developer with extensive experience in backend development, microservices architecture, and building robust enterprise-grade applications.',
+            expertise: ['Python 3', 'FastAPI', 'Microservices'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
             social: {
                 linkedin: '#',
-                twitter: '#',
-                github: '#',
-                email: 'divya@lifeboat.tech'
+                email: 'charan.python@lifeboat.co.in'
             },
             stats: {
-                experience: '7+ Years',
-                models: '50+',
-                accuracy: '98%'
+                experience: '5+ Years',
+                microservices: '30+',
+                scalability: '10x'
             }
         },
+        {
+            name: 'Pavan',
+            role: 'Frontend Developer',
+            image: '/assets/pavan.jpg',
+            bio: 'Passionate frontend developer focused on building user-friendly interfaces with clean code and optimal performance. Expertise in React ecosystem and modern CSS techniques.',
+            expertise: ['React & Redux', 'TypeScript', 'Next.js'],
+            gradient: 'from-[#3234a2] to-[#32a162]',
+            social: {
+                linkedin: '#',
+                email: 'pavan.frontend@lifeboat.co.in'
+            },
+            stats: {
+                experience: '5+ Years',
+                components: '500+',
+                optimized: '-60%'
+            }
+        },
+        {
+            name: 'Musharaf',
+            role: 'iOS Developer',
+            image: '/assets/musharaf.jpg',
+            bio: 'Seasoned iOS developer with extensive experience in creating sophisticated mobile applications. Expertise includes advanced iOS frameworks, performance optimization, and implementing clean architecture.',
+            expertise: ['Swift Programming', 'iOS Architecture', 'Performance'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
+            social: {
+                linkedin: 'https://www.linkedin.com/in/musharaf-mohammad-236b1120a',
+                email: 'musharaf@lifeboat.co.in'
+            },
+            stats: {
+                experience: '5+ Years',
+                apps: '30+',
+                reviews: '1000+'
+            }
+        },
+        {
+            name: 'Manasa',
+            role: 'Android Developer',
+            image: '/assets/manasa.jpg',
+            bio: 'Expert Android developer building high-performance mobile applications.',
+            expertise: ['Kotlin', 'Java', 'Android Studio'],
+            gradient: 'from-[#3234a2] to-[#32a162]',
+            social: {
+                linkedin: '#',
+                email: 'manasa@lifeboat.co.in'
+            },
+            stats: {
+                experience: '5+ Years',
+                apps: '50+',
+                downloads: '1M+'
+            }
+        },
+        {
+            name: 'Prashanth Nimmala',
+            role: 'MERN Stack Developer',
+            image: '/assets/Prashanth.jpg',
+            bio: 'Proficient MERN stack developer specializing in building scalable web applications with responsive interfaces and robust backend systems.',
+            expertise: ['MERN Stack', 'REST APIs', 'Redux'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
+            social: {
+                linkedin: '#',
+                email: 'prashanth.dev@lifeboat.co.in'
+            },
+            stats: {
+                experience: '4+ Years',
+                applications: '60+',
+                endpoints: '200+'
+            }
+        },
+        {
+            name: 'Harshini',
+            role: 'UI/UX Designer',
+            image: '/assets/Harshini.jpg',
+            bio: 'Award-winning UI/UX designer with expertise in creating visually stunning and highly functional digital products. Specializes in mobile app design and responsive web interfaces.',
+            expertise: ['Mobile UI Design', 'Responsive Web', 'Figma/XD'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
+            social: {
+                linkedin: 'https://www.linkedin.com/in/bonagiri-harshini-a325062a1',
+                email: 'harshini@lifeboat.co.in'
+            },
+            stats: {
+                experience: '6+ Years',
+                awards: '5+',
+                satisfaction: '4.9/5'
+            }
+        },
+        {
+            name: 'Anu Charan',
+            role: 'Graphic Designer',
+            image: '/assets/anucharan.jpg',
+            bio: 'Versatile graphic designer skilled in creating visually stunning marketing materials, logos, and branding assets. Combines artistic creativity with strategic thinking to deliver impactful designs.',
+            expertise: ['Logo & Branding', 'Marketing', 'Adobe Suite'],
+            gradient: 'from-[#3234a2] to-[#32a162]',
+            social: {
+                linkedin: 'https://www.linkedin.com/in/enugula-anucharan-490282343/',
+                email: 'anucharan@lifeboat.co.in'
+            },
+            stats: {
+                experience: '5+ Years',
+                logos: '100+',
+                campaigns: '30+'
+            }
+        },
+        {
+            name: 'Mahitha',
+            role: 'Human Resources Officer',
+            image: '/assets/mahitha.jpg',
+            bio: 'Skilled HR officer managing end-to-end employee lifecycle processes.',
+            expertise: ['Recruitment', 'Onboarding', 'HR Admin'],
+            gradient: 'from-[#32a162] to-[#3234a2]',
+            social: {
+                linkedin: '#',
+                email: 'mahitha@lifeboat.co.in'
+            },
+            stats: {
+                experience: '8+ Years',
+                hires: '200+',
+                retention: '95%'
+            }
+        }
     ]
 
+    // ✅ Navigation handler for View Open Positions
+    const handleViewCareers = () => {
+        navigate('/careers')
+    }
+
     return (
-        <section className={`py-24 relative overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-white'
-            }`}>
+        <section id="team" className="py-24 relative overflow-hidden bg-white">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0" style={{
-                    backgroundImage: `radial-gradient(circle at 1px 1px, ${darkMode ? '#fff' : '#000'} 1px, transparent 0)`,
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
                     backgroundSize: '40px 40px'
                 }} />
             </div>
@@ -182,21 +242,16 @@ const Team = ({ darkMode }) => {
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
-                        className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${darkMode
-                            ? 'bg-purple-900/50 text-purple-300 border border-purple-500/30'
-                            : 'bg-purple-100 text-purple-700 border border-purple-200'
-                            }`}
+                        className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-[#3234a2]/10 text-[#3234a2] border border-[#3234a2]/20"
                     >
                         👥 Our Team
                     </motion.span>
 
-                    <h2 className={`text-4xl md:text-6xl font-black mb-6 font-display ${darkMode ? 'text-white' : 'text-gray-900'
-                        }`}>
-                        Meet the <span className="gradient-text">Dream Team</span>
+                    <h2 className="text-4xl md:text-6xl font-black mb-6 font-display text-gray-900">
+                        Meet the <span className="bg-gradient-to-r from-[#3234a2] to-[#32a162] bg-clip-text text-transparent">Dream Team</span>
                     </h2>
 
-                    <p className={`text-xl max-w-2xl mx-auto ${darkMode ? 'text-gray-400' : 'text-gray-600'
-                        }`}>
+                    <p className="text-xl max-w-2xl mx-auto text-gray-600">
                         Talented individuals driving innovation and excellence every day
                     </p>
                 </motion.div>
@@ -216,16 +271,10 @@ const Team = ({ darkMode }) => {
                         >
                             <motion.div
                                 whileHover={{ y: -15, rotateY: 5 }}
-                                className={`h-full rounded-2xl overflow-hidden ${darkMode ? 'bg-gray-800' : 'bg-gray-50'
-                                    } border-2 border-transparent hover:border-purple-500 transition-all duration-500 shadow-lg hover:shadow-2xl relative`}
+                                className="h-full rounded-2xl overflow-hidden bg-gray-50 border-2 border-transparent hover:border-[#3234a2] transition-all duration-500 shadow-lg hover:shadow-2xl relative flex flex-col"
                             >
-                                {/* Gradient Border Animation */}
-                                <motion.div
-                                    className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10`}
-                                />
-
                                 {/* Image Container */}
-                                <div className="relative overflow-hidden">
+                                <div className="relative overflow-hidden flex-shrink-0">
                                     <motion.img
                                         src={member.image}
                                         alt={member.name}
@@ -234,6 +283,9 @@ const Team = ({ darkMode }) => {
                                             scale: hoveredMember === index ? 1.1 : 1,
                                         }}
                                         transition={{ duration: 0.6 }}
+                                        onError={(e) => {
+                                            e.target.src = `https://ui-avatars.com/api/?name=${member.name}&size=400&background=3234a2&color=fff`
+                                        }}
                                     />
 
                                     {/* Gradient Overlay */}
@@ -246,39 +298,42 @@ const Team = ({ darkMode }) => {
                                             opacity: hoveredMember === index ? 1 : 0,
                                             y: hoveredMember === index ? 0 : 20
                                         }}
-                                        className="absolute inset-0 flex items-center justify-center gap-3 bg-black/50 backdrop-blur-sm"
+                                        className="absolute inset-0 flex items-center justify-center gap-4 bg-black/50 backdrop-blur-sm"
                                     >
-                                        {[
-                                            { Icon: FaLinkedin, link: member.social.linkedin, color: '#0077b5' },
-                                            { Icon: FaTwitter, link: member.social.twitter, color: '#1da1f2' },
-                                            { Icon: FaGithub, link: member.social.github, color: '#333' },
-                                            { Icon: FaEnvelope, link: `mailto:${member.social.email}`, color: '#ea4335' },
-                                        ].map((social, idx) => (
-                                            <motion.a
-                                                key={idx}
-                                                href={social.link}
-                                                whileHover={{ scale: 1.2, rotate: 5 }}
-                                                whileTap={{ scale: 0.9 }}
-                                                className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
-                                                style={{ color: social.color }}
-                                            >
-                                                <social.Icon className="text-xl" />
-                                            </motion.a>
-                                        ))}
+                                        <motion.a
+                                            href={member.social.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            whileHover={{ scale: 1.2, rotate: 5 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#0077b5] hover:text-white transition-all"
+                                            style={{ color: '#0077b5' }}
+                                        >
+                                            <FaLinkedin className="text-xl" />
+                                        </motion.a>
+
+                                        <motion.a
+                                            href={`mailto:${member.social.email}`}
+                                            whileHover={{ scale: 1.2, rotate: 5 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#ea4335] hover:text-white transition-all"
+                                            style={{ color: '#ea4335' }}
+                                        >
+                                            <FaEnvelope className="text-xl" />
+                                        </motion.a>
                                     </motion.div>
 
                                     {/* Role Badge */}
                                     <div className="absolute top-4 left-4">
-                                        <span className={`px-3 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur-sm text-gray-900`}>
+                                        <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur-sm text-gray-900">
                                             {member.role.split(' ')[0]}
                                         </span>
                                     </div>
                                 </div>
 
-                                {/* Content */}
-                                <div className="p-6">
-                                    <h3 className={`text-xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'
-                                        }`}>
+                                {/* Content - ✅ Fixed Alignment */}
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <h3 className="text-xl font-bold mb-2 text-gray-900">
                                         {member.name}
                                     </h3>
 
@@ -286,59 +341,37 @@ const Team = ({ darkMode }) => {
                                         {member.role}
                                     </p>
 
-                                    <p className={`text-sm mb-4 line-clamp-2 ${darkMode ? 'text-gray-400' : 'text-gray-600'
-                                        }`}>
+                                    {/* ✅ Fixed height for bio */}
+                                    <p className="text-sm mb-4 text-gray-600 line-clamp-2 min-h-[40px]">
                                         {member.bio}
                                     </p>
 
-                                    {/* Expertise Tags */}
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {member.expertise.map((skill, idx) => (
-                                            <motion.span
+                                    {/* ✅ Fixed Expertise Tags - always 3 */}
+                                    <div className="flex flex-wrap gap-2 mb-4 min-h-[60px]">
+                                        {member.expertise.slice(0, 3).map((skill, idx) => (
+                                            <span
                                                 key={idx}
-                                                initial={{ opacity: 0, scale: 0 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: idx * 0.1 }}
-                                                className={`px-2 py-1 rounded-lg text-xs font-semibold ${darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'
-                                                    }`}
+                                                className="px-2 py-1 rounded-lg text-xs font-semibold bg-gray-200 text-gray-700"
                                             >
                                                 {skill}
-                                            </motion.span>
+                                            </span>
                                         ))}
                                     </div>
 
-                                    {/* Stats */}
-                                    <div className="grid grid-cols-3 gap-2">
-                                        {Object.entries(member.stats).map(([key, value], idx) => (
-                                            <div key={idx} className={`text-center p-2 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'
-                                                }`}>
-                                                <div className={`text-sm font-black bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent`}>
+                                    {/* ✅ Fixed Stats - always at bottom, 3 columns */}
+                                    <div className="grid grid-cols-3 gap-2 mt-auto">
+                                        {Object.entries(member.stats).slice(0, 3).map(([key, value], idx) => (
+                                            <div key={idx} className="text-center p-2 rounded-lg bg-gray-100">
+                                                <div className={`text-xs font-black bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent`}>
                                                     {value}
                                                 </div>
-                                                <div className={`text-xs capitalize ${darkMode ? 'text-gray-400' : 'text-gray-600'
-                                                    }`}>
+                                                <div className="text-[10px] capitalize text-gray-600 truncate">
                                                     {key}
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-
-                                {/* Shine Effect */}
-                                <motion.div
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                                    style={{
-                                        background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)',
-                                        backgroundSize: '200% 200%',
-                                    }}
-                                    animate={{
-                                        backgroundPosition: hoveredMember === index ? ['0% 0%', '100% 100%'] : '0% 0%',
-                                    }}
-                                    transition={{
-                                        duration: 1.5,
-                                        repeat: hoveredMember === index ? Infinity : 0,
-                                    }}
-                                />
                             </motion.div>
                         </motion.div>
                     ))}
@@ -349,10 +382,7 @@ const Team = ({ darkMode }) => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className={`mt-16 p-12 rounded-3xl text-center ${darkMode
-                        ? 'bg-gradient-to-br from-purple-900/50 to-pink-900/50 border border-purple-500/30'
-                        : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200'
-                        }`}
+                    className="mt-16 p-12 rounded-3xl text-center bg-gradient-to-br from-[#3234a2]/5 to-[#32a162]/5 border border-[#3234a2]/20"
                 >
                     <motion.div
                         animate={{ scale: [1, 1.1, 1] }}
@@ -361,16 +391,17 @@ const Team = ({ darkMode }) => {
                     >
                         🚀
                     </motion.div>
-                    <h3 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <h3 className="text-3xl font-bold mb-4 text-gray-900">
                         Want to Join Our Team?
                     </h3>
-                    <p className={`text-lg mb-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p className="text-lg mb-6 text-gray-600">
                         We're always looking for talented individuals to join our mission
                     </p>
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-bold text-lg shadow-lg neon-glow"
+                        onClick={handleViewCareers}  // ✅ Added navigation
+                        className="px-10 py-4 bg-gradient-to-r from-[#3234a2] to-[#32a162] text-white rounded-xl font-bold text-lg shadow-lg"
                     >
                         View Open Positions →
                     </motion.button>

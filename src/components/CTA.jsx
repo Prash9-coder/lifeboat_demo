@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { FaRocket, FaPhone, FaCalendar, FaArrowRight } from 'react-icons/fa'
+import { FaRocket, FaCalendar, FaArrowRight } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
-const CTA = ({ darkMode }) => {
+const CTA = () => {
     const features = [
         { icon: '⚡', text: 'Fast Delivery' },
         { icon: '💎', text: 'Premium Quality' },
@@ -10,33 +11,18 @@ const CTA = ({ darkMode }) => {
     ]
 
     return (
-        <section className={`py-24 relative overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-white'
-            }`}>
+        <section className="py-24 relative overflow-hidden bg-white">
             {/* Animated Background */}
             <div className="absolute inset-0">
                 <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 90, 0],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full opacity-20 blur-3xl"
+                    animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-0 left-1/4 w-96 h-96 bg-[#3234a2] rounded-full opacity-20 blur-3xl"
                 />
                 <motion.div
-                    animate={{
-                        scale: [1.2, 1, 1.2],
-                        rotate: [90, 0, 90],
-                    }}
-                    transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500 rounded-full opacity-20 blur-3xl"
+                    animate={{ scale: [1.2, 1, 1.2], rotate: [90, 0, 90] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#32a162] rounded-full opacity-20 blur-3xl"
                 />
             </div>
 
@@ -49,7 +35,7 @@ const CTA = ({ darkMode }) => {
                     className="relative"
                 >
                     {/* Main CTA Card */}
-                    <div className="relative p-12 md:p-16 rounded-3xl overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 shadow-2xl">
+                    <div className="relative p-12 md:p-16 rounded-3xl overflow-hidden bg-gradient-to-br from-[#3234a2] via-[#32a162] to-[#3234a2] shadow-2xl">
                         {/* Animated Grid Background */}
                         <div className="absolute inset-0 opacity-10">
                             <div className="absolute inset-0" style={{
@@ -104,16 +90,7 @@ const CTA = ({ darkMode }) => {
                             >
                                 Ready to Build Something
                                 <br />
-                                <motion.span
-                                    animate={{
-                                        backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                                    }}
-                                    transition={{ duration: 5, repeat: Infinity }}
-                                    className="inline-block bg-gradient-to-r from-yellow-300 via-pink-300 to-yellow-300 bg-clip-text text-transparent"
-                                    style={{ backgroundSize: '200% auto' }}
-                                >
-                                    Amazing?
-                                </motion.span>
+                                <span className="text-yellow-300">Amazing?</span>
                             </motion.h2>
 
                             {/* Subheadline */}
@@ -136,24 +113,28 @@ const CTA = ({ darkMode }) => {
                                 transition={{ delay: 0.6 }}
                                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
                             >
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -3 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="group px-10 py-5 bg-white text-purple-600 rounded-2xl font-bold text-lg shadow-2xl flex items-center gap-3 hover:shadow-white/50 transition-all"
-                                >
-                                    <FaRocket className="group-hover:rotate-12 transition-transform" />
-                                    Start Your Project
-                                    <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
-                                </motion.button>
+                                <Link to="/contact">
+                                    <motion.button
+                                        whileHover={{ scale: 1.05, y: -3 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="group px-10 py-5 bg-white text-[#3234a2] rounded-2xl font-bold text-lg shadow-2xl flex items-center gap-3 hover:shadow-white/50 transition-all"
+                                    >
+                                        <FaRocket className="group-hover:rotate-12 transition-transform" />
+                                        Start Your Project
+                                        <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
+                                    </motion.button>
+                                </Link>
 
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -3 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-10 py-5 bg-white/10 backdrop-blur-xl text-white border-2 border-white/30 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center gap-3"
-                                >
-                                    <FaCalendar />
-                                    Schedule a Call
-                                </motion.button>
+                                <Link to="/contact">
+                                    <motion.button
+                                        whileHover={{ scale: 1.05, y: -3 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="px-10 py-5 bg-white/10 backdrop-blur-xl text-white border-2 border-white/30 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center gap-3"
+                                    >
+                                        <FaCalendar />
+                                        Schedule a Call
+                                    </motion.button>
+                                </Link>
                             </motion.div>
 
                             {/* Features */}
@@ -236,14 +217,11 @@ const CTA = ({ darkMode }) => {
                             viewport={{ once: true }}
                             transition={{ delay: 0.6 + index * 0.1 }}
                             whileHover={{ y: -5, scale: 1.05 }}
-                            className={`p-6 rounded-2xl text-center ${darkMode ? 'bg-gray-800' : 'bg-gray-50'
-                                } shadow-lg`}
+                            className="p-6 rounded-2xl text-center bg-gray-50 shadow-lg"
                         >
                             <div className="text-4xl mb-2">{stat.icon}</div>
                             <div className="text-3xl font-black gradient-text mb-1">{stat.number}</div>
-                            <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                                {stat.label}
-                            </div>
+                            <div className="text-sm text-gray-600">{stat.label}</div>
                         </motion.div>
                     ))}
                 </motion.div>
